@@ -1,64 +1,25 @@
 extends layout
+include fonksiyonlar/yildiz
+
 block content
-  #banner.page-header
+    #banner.page-header
+        .row 
+            .col-lg-6 
+                h1 
+                    | #{sayfaBaslik.siteAd} 
+                    small &nbsp; #{sayfaBaslik.slogan}
     .row 
-      .col-lg-6 
-        h1 
-          | Mekanbul 
-          small &nbsp; Yakınlarındaki Mekanları Bul!
-  .row 
-    .row.list-group 
-    .col-xs-12.col-sm-12
-      .col-xs-12.list-group-item 
-        h4 
-          a(href='/mekan') Anadolu Pide
-          small &nbsp;
-          span.glyphicon.glyphicon-star
-          span.glyphicon.glyphicon-star
-          span.glyphicon.glyphicon-star
-          span.glyphicon.glyphicon-star
-          span.glyphicon.glyphicon-star-empty
-        span.badge.pull-right.badge-default 10km
-        p.adress Centrum Garden AVM
-        p
-          span.label.label-warning Odun Fırınında
-          | &nbsp;
-          span.label.label-warning Lezzetli Pide
-          | &nbsp;
-  .row 
-    .row.list-group 
-    .col-xs-12.col-sm-12
-      .col-xs-12.list-group-item
-        h4 
-          a(href='/mekan') McDonalds
-          small &nbsp;
-          span.glyphicon.glyphicon-star
-          span.glyphicon.glyphicon-star
-          span.glyphicon.glyphicon-star
-          span.glyphicon.glyphicon-star-empty
-          span.glyphicon.glyphicon-star-empty
-        span.badge.pull-right.badge-default 6km
-        p.adress IyaşPark Avm
-        p
-          span.label.label-warning Burger
-          | &nbsp;
-          span.label.label-warning Satılır
-          | &nbsp;
-  .row 
-    .row.list-group 
-    .col-xs-12.col-sm-12
-      .col-xs-12.list-group-item      
-        h4 
-          a(href='/mekan') Domino's Pizza 
-          small &nbsp;
-          span.glyphicon.glyphicon-star
-          span.glyphicon.glyphicon-star
-          span.glyphicon.glyphicon-star
-          span.glyphicon.glyphicon-star
-          span.glyphicon.glyphicon-star-empty
-        span.badge.pull-right.badge-default 6km
-        p.adress Isparta
-        p
-          span.label.label-warning Sodexo
-          | &nbsp;
-          span.label.label-warning A2 Kurye Aranıyor
+        each mekan in mekanlar
+            .row.list-group 
+            .col-xs-12.col-sm-12
+                .col-xs-12.list-group-item
+                    h4 
+                        a(href='/mekan') #{mekan.ad}
+                        small &nbsp;
+                        +puanOlustur(mekan.puan)
+                    span.badge.pull-right.badge-default #{mekan.mesafe}
+                    p.address #{mekan.adres}
+                    p
+                        each imkan in mekan.imkanlar
+                            span.label.label-warning #{imkan}
+                            | &nbsp;
