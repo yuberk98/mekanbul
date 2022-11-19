@@ -42,7 +42,7 @@ const mekanlariListele = async (req, res) => {
                     ...geoOptions,
                 },
             },
-        ])
+        ]);
         const mekanlar = sonuc.map((mekan) => {
             return{
                 mesafe: cevrimler.kilometre2Radyan(mekan.mesafe),
