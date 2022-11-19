@@ -1,19 +1,19 @@
 const database = 'mekanbul';
 use(database);
 db.mekanlar.insertOne(
-  {
+{
   "ad": "Anadolu Pide",
   "adres": "Centrum Garden AVM",
-  "puan": "4",
+  "puan": 5,
   "imkanlar": [
     "Pide",
     "Kebap",
     "Künefe"
   ],
-  "koordinatlar": {
-    "enlem": "37.7",
-    "boylam": "30.5"
-  },
+  "koordinat": [
+    37.83226584629666,
+    30.524732239878013
+  ],
   "saatler": [
     {
       "gunler": "Pazartesi-Cuma",
@@ -23,9 +23,10 @@ db.mekanlar.insertOne(
     },
     {
       "gunler": "Cumartesi-Pazar",
-      "acilis": "10:00",
-      "kapanis": "22:00",
+      "acilis": "11:00",
+      "kapanis": "17:00",
       "kapali": false
     }
   ]
-})
+}
+ );
