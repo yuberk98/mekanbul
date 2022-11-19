@@ -1,0 +1,14 @@
+const database = 'mekanbul';
+use(database);
+db.mekanlar.updateOne({"ad":"Anadolu Pide"},
+  {$push: {"yorumlar": 
+    {
+      "_id": ObjectId(),
+      "yorumYapan": "Sıla",
+      "puan": 5,
+      "yorumMetni": "Pideler harika",
+      "tarih": new Date()
+    }
+  }
+}
+)
